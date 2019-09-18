@@ -30,8 +30,8 @@ public class PlayerControl : MonoBehaviour
 
     private void platformMovement()
     {
-      //  Vector2 resetSpeed = new Vector2(0,0);
-      //  rigidBody2d.velocity = resetSpeed;
+        Vector2 resetSpeed = new Vector2(0,0);
+        rigidBody2d.velocity = resetSpeed;
         Vector2 velocity = rigidBody2d.velocity;
 
         if (Input.GetKey(upButton))
@@ -49,7 +49,7 @@ public class PlayerControl : MonoBehaviour
             velocity.y = 0.0f;
         }
 
-        rigidBody2d.velocity = velocity;
+        rigidBody2d.velocity += velocity;
     }
 
     private void checkBoundary()

@@ -39,7 +39,7 @@ public class Trajectory : MonoBehaviour
 
                 offsetHitPoint = hitPoint + hitNormal * ballCollider.radius;
 
-                DottedLine.DottedLine.Instance.DrawDottedLine(ball.transform.position, offsetHitPoint);
+                //DottedLine.DottedLine.Instance.DrawDottedLine(ball.transform.position, offsetHitPoint);
 
                 // Kalau bukan sidewall, gambar pantulannya
                 if (circleCastHit2D.collider.GetComponent<SideWall>() == null)
@@ -56,10 +56,10 @@ public class Trajectory : MonoBehaviour
                     if (outDot > -1.0f && outDot < 1.0)
                     {
                         // Gambar lintasan pantulannya
-                        DottedLine.DottedLine.Instance.DrawDottedLine(
+                        /*DottedLine.DottedLine.Instance.DrawDottedLine(
                             offsetHitPoint,
                             offsetHitPoint + outVector * 10.0f);
-
+                         */
                         // Untuk menggambar bola "bayangan" di prediksi titik tumbukan
                         drawBallAtCollision = true;
                     }

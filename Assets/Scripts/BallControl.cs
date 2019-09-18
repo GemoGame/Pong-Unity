@@ -36,19 +36,17 @@ public class BallControl : MonoBehaviour
 
     void PushBall()
     {
-        float yRandomInitialForce = Random.Range(-yInitialForce,yInitialForce);
-    
         float randomDirection = Random.Range(0,2);
 
 
         if (randomDirection > 1.0f)
         {
-            rigidbody2D.AddForce(new Vector2(-xInitialForce,yRandomInitialForce));
+            rigidbody2D.AddForce(new Vector2(-xInitialForce,yInitialForce));
         }
 
         else
         {
-            rigidbody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce));
+            rigidbody2D.AddForce(new Vector2(xInitialForce, yInitialForce));
         }
     }
 
