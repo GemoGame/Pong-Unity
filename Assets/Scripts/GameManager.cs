@@ -13,14 +13,45 @@ public class GameManager : MonoBehaviour
     private CircleCollider2D ballCollider;
     public int maxScore = 10;
     public Trajectory trajectory;
+    public PowerUpSpawner powerUpSpawner;
+    private Coroutine CR_powerUpSpawner;
     private bool isDebugWindowShown = false;
+    private float spawnInterval = 10.0f;
     void Start()
     {
         player1rigidbody2d = player1.GetComponent<Rigidbody2D>();
         player2rigidbody2d = player2.GetComponent<Rigidbody2D>();
         ballRigidbody = ball.GetComponent<Rigidbody2D>();
         ballCollider = ball.GetComponent<CircleCollider2D>();
+        startPowerUpSpawner();
+    }
 
+    void startPowerUpSpawner()
+    {
+        if (CR_powerUpSpawner == null)
+        {
+            Debug.Log("Power-Up Spawner started");
+            CR_powerUpSpawner = StartCoroutine(spawnPowerUp());
+        }
+    }
+
+    void stopPowerUpSpawner()
+    {
+        if (CR_powerUpSpawner != null)
+        {
+            StopCoroutine(CR_powerUpSpawner);
+        }
+    }
+
+    IEnumerator spawnPowerUp()
+    {
+        while(true)
+        {
+            powerUpSpawner.spawnPowerUp();
+
+            yield return new WaitForSeconds(spawnInterval);
+        }
+        
     }
 
     void OnGUI()
@@ -79,6 +110,7 @@ public class GameManager : MonoBehaviour
             guiStyle.alignment = TextAnchor.UpperCenter;
             GUI.TextArea(new Rect(Screen.width / 2 - 200, Screen.height - 200, 400, 110), debugText, guiStyle);
         }
+        
         else 
         {
             GUI.backgroundColor = oldColor;

@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>/home/zak/Unity/Hub/Editor/2019.2.0f1/Editor/Data/Tools/RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.sh</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -60,8 +58,11 @@
      <Compile Include="Assets\Scripts\BallControl.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
+     <Compile Include="Assets\Scripts\PowerUp.cs" />
+     <Compile Include="Assets\Scripts\PowerUpSpawner.cs" />
      <Compile Include="Assets\Scripts\SideWall.cs" />
      <Compile Include="Assets\Scripts\Trajectory.cs" />
+     <None Include="Assets\SpriteGlow\Resources\SpriteGlow\Shaders\SpriteOutline.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/home/zak/Pong/Pong/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -611,6 +612,12 @@
  <Reference Include="mscorlib">
  <HintPath>/home/zak/Unity/Hub/Editor/2019.2.0f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Elringus.SpriteGlow.Runtime.csproj">
+      <Project>{070FAA84-3D28-B015-AC58-65DEE140AECC}</Project>
+      <Name>Elringus.SpriteGlow.Runtime</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -16,6 +16,7 @@ public class SideWall : MonoBehaviour
             {
                 collosion.gameObject.SendMessage("RestartGame", 2.0f, SendMessageOptions.RequireReceiver);
             }
-        }        
+        }
+    
     }
 }
