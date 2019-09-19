@@ -19,6 +19,7 @@ public class PlayerControl : MonoBehaviour
     private float speedChangeInterval = 0.02f;
     private int powerUpDuration = 5;
     public PlayerControl enemy;
+    public GameManager gameManager;
     private Vector2 defaultPositionP1 = new Vector2(-15, 0);
     private Vector2 defaultPositionP2 = new Vector2(15, 0);
     void Start()
@@ -112,6 +113,14 @@ public class PlayerControl : MonoBehaviour
         score++;
     }
 
+    public void setScore(int value)
+    {
+        score = value;
+    }
+    public void instantDefeat()
+    {
+        enemy.setScore(gameManager.MaxScore);
+    }
     public void ResetScore()
     {
         score = 0;
@@ -121,6 +130,7 @@ public class PlayerControl : MonoBehaviour
     {
         get { return score; }
     }
+    
 
 
     IEnumerator adjustBallSpeed(float currentSpeed)
@@ -185,7 +195,7 @@ public class PlayerControl : MonoBehaviour
             if(ball.IsOnFire)
             {
                 resetPlatform();
-                enemy.IncrementScore();
+                instantDefeat();
                 collosion.gameObject.SendMessage("RestartGame", 2.0f, SendMessageOptions.RequireReceiver);
             }
             ball.modifySpeed(speedMultiplier);

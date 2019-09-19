@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         startPowerUpSpawner();
     }
 
+    public int MaxScore
+    {
+        get {return maxScore;}
+    }
+
     void startPowerUpSpawner()
     {
         if (CR_powerUpSpawner == null)
